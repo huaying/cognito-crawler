@@ -52,9 +52,7 @@ class CognitoCrawler:
 
         candidates = {}
 
-        i = 0
-        while i < 2:
-            i += 1
+        while True:
             self.go_to_list()
             cur_elem.send_keys(Keys.DOWN)
             self.got_to_details()
