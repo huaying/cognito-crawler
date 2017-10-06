@@ -1,34 +1,13 @@
-# Instagram Crawler [![Build Status](https://travis-ci.org/huaying/ins-crawler.svg?branch=master)](https://travis-ci.org/huaying/ins-crawler)
-Get Instagram posts/profile/hashtag data without using Instagram API.
+# cognito-crawler
+Download resume file and candidate info from Cognito Forms with webdriver
 
-## Install
-1. Download chromedriver and put it into bin folder: `./inscrawler/bin/chromedriver`
-2. Install Selenium: `pip install -r requirement.txt`
+## Setup
+1. The chromedrive only works for Mac. You need to download the correct version of chromedrive based on your os.
+2. Install library: `pip install -r requirements.txt`
+3. `cp secret.py.dist secret.py` and put username and password in the file `secret.py`
 
 ## Usage
-```
-positional arguments:
-  mode                  options: [posts, profile, hashtag]
+`python crawler.py`
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -n NUMBER, --number NUMBER
-                        number of returned posts
-  -u USERNAME, --username USERNAME
-                        instagram's username
-  -t TAG, --tag TAG     instagram's tag name
-  -o OUTPUT, --output OUTPUT
-                        output file name(json format)
-```
+Then it will download all the resume file into `data/` and create a file `candidates.json` which includes candidates' name / email / resume_name.
 
-
-## Example
-```
-python crawler.py posts -u cal_foodie -n 100 -o ./output
-python crawler.py profile -u cal_foodie -o ./output
-python crawler.py hashtag taiwan -o ./output
-```
-1. Return default 100 hashtag posts(mode: hashtag) and all user's posts(mode: posts) if not specifying the number of post `-n`, `--number`.
-2. Print the result to the console if not specifying the output path of post `-o`, `--output`.
-3. It takes much longer to get data if the post number is over about 1000 since Instagram has set up the rate limit for data request.
-4. Don't use this repo crawler Instagram if the user has more than 10000 posts.
