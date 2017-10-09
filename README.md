@@ -1,5 +1,5 @@
 # cognito-crawler
-Download resume file and candidate info from Cognito Forms with webdriver
+Download resume file and candidate info from Cognito Forms with webdriver (currently only support python3)
 
 ## Setup
 1. The chromedrive only works for Mac. You need to download the correct version of chromedrive based on your os.
@@ -10,4 +10,9 @@ Download resume file and candidate info from Cognito Forms with webdriver
 `python crawler.py`
 
 Then it will download all the resume file into `data/` and create a file `candidates.json` which includes candidates' name / email / resume_name.
+
+
+`python crawler.py --download_only`
+
+If you already have candidates.json, this will download resume for you. 
 
