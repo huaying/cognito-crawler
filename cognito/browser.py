@@ -8,10 +8,16 @@ from time import sleep
 
 
 class Browser:
-    def __init__(self):
+    def __init__(self, default_dir='/tmp'):
         dir_path = os.path.dirname(os.path.realpath(__file__))
         service_args = ['--ignore-ssl-errors=true']
         chrome_options = Options()
+        chrome_options.add_experimental_option("prefs", {
+          'download.default_directory': default_dir,
+          'download.prompt_for_download': False,
+          'download.directory_upgrade': True,
+          'safebrowsing.enabled': True
+        })
         # chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(
             executable_path='%s/bin/chromedriver' % dir_path,
