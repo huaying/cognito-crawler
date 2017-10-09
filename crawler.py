@@ -12,7 +12,7 @@ data_dir = '%s/data' % cur_dir
 def usage():
     return '''
         python crawler.py
-        python crawler.py --dowanlod_only
+        python crawler.py --download_only
     '''
 
 
@@ -20,12 +20,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Cognito Forms Crawler',
                                      usage=usage())
 
-    parser.add_argument('--dowanlod_only', action='store_true', default=False)
+    parser.add_argument('--download_only', action='store_true', default=False)
     args = parser.parse_args()
 
     cognito_crawler = CognitoCrawler(data_dir)
     cognito_crawler.login(USERNAME, PASSWDORD)
-    if args.dowanlod_only:
+    if args.download_only:
         cognito_crawler.download_resumes()
     else:
         cognito_crawler.run()
